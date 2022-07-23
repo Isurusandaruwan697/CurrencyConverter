@@ -49,13 +49,19 @@ public class USD extends javax.swing.JFrame {
         });
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LKR", "IR", "DINAR", "YEN" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LKR", "IR", "DINAR", "YEN", "EURO" }));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("CONVERT");
         jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("AMOUNT");
@@ -154,6 +160,32 @@ public class USD extends javax.swing.JFrame {
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+       Double amount,value;
+       
+       amount=Double.parseDouble(jTextField1.getText());
+       
+       if(jComboBox1.getSelectedItem().equals("LKR")){
+          value =amount/358.58;
+           jLabel1.setText(Double.toString(Math.round(value*100)/100.0)+" USD");
+           
+       }else if(jComboBox1.getSelectedItem().equals("IR")){
+           value =amount/79.85;
+           jLabel1.setText(Double.toString(Math.round(value*100)/100.0)+" USD");
+           
+       }else if(jComboBox1.getSelectedItem().equals("DINAR")){
+           value =amount/0.31;
+           jLabel1.setText(Double.toString(Math.round(value*100)/100.0)+" USD");}
+       
+       else if(jComboBox1.getSelectedItem().equals("YEN")){
+           value =amount/136.18;
+           jLabel1.setText(Double.toString(Math.round(value*100)/100.0)+" USD");}
+       
+       else if(jComboBox1.getSelectedItem().equals("EURO")){
+           value =amount/0.98;
+           jLabel1.setText(Double.toString(Math.round(value*100)/100.0)+" USD");}
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
